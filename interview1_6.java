@@ -48,12 +48,6 @@ public class interview1_6 {
 		for (int i=0; i<size/2; i++) {
 			for (int j=i; j < size - k; j++) {
 				image = rotRight(image, i, j);
-//				for (int m=0; m<size; m++) {
-//					for (int n=0; j < size; n++) {
-//						System.out.print(image[m][n]);
-//					}
-//					System.out.println("");
-//				}
 			}
 			k++;
 		}
