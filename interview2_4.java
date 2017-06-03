@@ -12,8 +12,35 @@ import java.util.Random;
 
 public class interview2_4 {
 	public static void main(String[] args) {
-		init(new int[] {3, 1, 5});
-		init(new int[] {5, 1, 5});
+		Node node1 = init(new int[] {8, 9, 5, 3, 6, 8, 9});
+		Node node2 = init(new int[] {5, 9, 5, 3, 4});
+		Node head = node1;
+
+		printNode(node1);
+		printNode(node2);
+
+		while (node1 != null || node2 != null) {
+			int sum = ((node1 != null) ? node1.data : 0) + ((node2 != null) ? node2.data : 0);
+			if (sum > 9) {
+				sum = sum - 10;
+				if (node1.next != null) {
+					node1.next.data += 1;
+				}
+				else {
+					node1.next = new Node();
+					node1.next.data = 1;
+				}
+			}
+
+			node1.data = sum;
+
+			if (node1.next == null && node2 != null && node2.next != null) node1.next = new Node();
+			node1 = node1.next;
+			if (node2 != null) node2 = node2.next;
+		}
+
+		printNode(head);
+
 	}
 
 	public static void printNode(Node head) {
